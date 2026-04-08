@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B2P Склад</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <main class="app">
+      <header class="header">
+        <div class="header-top">
+          <p class="label">mini app</p>
+          <button id="suggestOpenBtn" class="suggest-open-btn" type="button">Предложения по поставке</button>
+        </div>
+        <h1>Склад</h1>
+        <p class="sub" id="stockDateText">Актуальные остатки на ...</p>
+      </header>
+
+      <section class="categories" id="categories"></section>
+
+      <section class="content">
+        <div class="content-head">
+          <h2 id="currentCategory">Каталог</h2>
+          <button id="refreshBtn" type="button">Обновить</button>
+        </div>
+        <div id="products" class="products"></div>
+      </section>
+    </main>
+
+    <template id="productCardTemplate">
+      <article class="product-card">
+        <img class="product-image" alt="Фото товара" />
+        <div class="product-body">
+          <h3 class="product-name"></h3>
+          <p class="product-stock"></p>
+        </div>
+      </article>
+    </template>
+
+    <div id="imageModal" class="image-modal" aria-hidden="true">
+      <button id="imageModalClose" class="image-modal-close" type="button" aria-label="Закрыть просмотр">×</button>
+      <img id="imageModalPreview" class="image-modal-preview" alt="Увеличенное фото товара" />
+    </div>
+
+    <div id="suggestModal" class="suggest-modal" aria-hidden="true">
+      <div class="suggest-modal-card">
+        <div class="suggest-head">
+          <h3>Предложения по поставке</h3>
+          <button id="suggestCloseBtn" class="suggest-close-btn" type="button" aria-label="Закрыть форму">×</button>
+        </div>
+        <p class="suggest-note">Напиши, что нужно добавить в поставку. Сообщение уйдет владельцу бота.</p>
+        <textarea id="suggestText" class="suggest-text" placeholder="Например: добавить 20 шт. Lemon Mint 30ml, крепость 20мг" maxlength="800"></textarea>
+        <div class="suggest-actions">
+          <button id="suggestSendBtn" class="suggest-send-btn" type="button">Отправить</button>
+        </div>
+        <p id="suggestStatus" class="suggest-status"></p>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
